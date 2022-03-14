@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/jquery.js"></script>
+    <!-- <link rel="stylesheet" href="css/all.css"> -->
+    <title>Document</title>
+    <style> 
+ html{
+  font-size: 62.5%;
+}
+*{
+  padding: 0;margin: 0;
+  box-sizing: border-box;
+}
+.main{
+  overflow: none;
+}
+header{
+background-color: azure;
+text-align: center;
+font-size: 3rem;
+}
+header a{
+text-decoration: none;
+font-weight: 900;
+color:black;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+header a span{
+color: dodgerblue;
+}
+.uheader{
+height: 5rem;
+width: 100%;
+display: flex;
+background-color: dodgerblue;
+padding: 1rem 0;
+}
+.back{
+  display: none;
+}
+.back img{
+  height: 3rem;
+  width: 3rem;
+  margin-top: .8rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.back img:hover{
+  background-color: red;
+}
+.profile{
+height: 4rem;
+width: 4rem;
+border-radius: 50%;
+width: 20%;
+}
+.profile img{
+height: 4rem;
+width: 4rem;
+border-radius: 50%;
+margin-top: -.5rem;
+}
+.sglobal{
+width: 60%;
+display: flex;
+justify-content: space-around;
+}
+.sglobal input{
+width: 90%;
+padding: 1rem 2rem;
+font-size: 2rem;
+border-radius: 2rem;
+outline: none;
+border: none;
+}
+.sglobal img{
+height: 2.7rem;
+width: 2.7rem;
+margin-top: .3rem;
+cursor: pointer;
+}
+.serch_item{
+position: absolute;
+max-height: 20rem;
+background-color: white;
+min-width: 30rem;
+border:1px solid dodgerblue;
+padding: .5rem;
+overflow: auto;
+z-index: 10;
+margin-top: 3rem;
+display: none;
+}
+.sigle_search{
+padding:.5rem 1rem;
+display: flex;
+justify-content: space-between;
+border: 2px solid dodgerblue;
+margin-bottom: 1rem;
+}
+.sprofi img{
+border-radius: 50%;
+}
+.sprofi{
+display: flex;
+}
+.sprofi p{
+font-size: 1.8rem;
+margin-left: 1rem;
+margin-top: .3rem;
+}
+.addf button{
+background-color: dodgerblue;
+border: none;
+outline: none;
+padding: .5rem;
+cursor: pointer;
+margin-top: .3rem;
+}
+
+.manu{
+width: 20%;
+}
+.manu img{
+float:right;
+height: 2.5rem;
+width: 2.5rem;
+cursor: pointer;
+}
+.optin{
+position: absolute;
+/* height: 4rem; */
+/* width: 3rem; */
+padding: 1rem;
+background-color: rgb(255, 255, 255);
+right: 3rem;
+z-index: 12;
+display: none;
+}
+.optin::after{
+content: "";
+width: 0; 
+height: 0; 
+border-top: 1.5rem solid transparent;
+border-bottom: 1.5rem solid transparent;
+
+border-left: 1.5rem solid rgb(255, 255, 255);
+position: absolute;
+top: 0;
+right: -1.5rem;
+}
+.optin button{
+width: 100%;
+padding: .5rem;
+display: flex;
+margin-bottom: .5rem;
+cursor: pointer;
+}
+.optin img{
+width: 1.6rem;
+height: 1.6rem;
+}
+.usercontent{
+width: 100%;
+max-height: 86.5vh;
+overflow: hidden;
+display: flex;
+}
+.lside h2{
+text-align: center;
+background-color: #f2f2f2;
+font-size: 2rem;
+}
+.lside{
+/* display: none; */
+width: 30%;
+height: 95vh;
+border-right: .2rem solid dodgerblue;
+position: relative;
+}
+.contacts{
+height: 100%;
+padding: 2rem 1rem;
+overflow-y: auto;
+
+}
+.contact{
+height: 4rem;
+display: flex;
+justify-content: space-around;
+padding: .5rem 0;
+border-radius: 2rem;
+border: 1px solid dodgerblue;
+cursor: pointer;
+margin-bottom: 1rem;
+position: relative;
+}
+.contact:hover{
+background-color: #f2f2f2;
+}
+.contact img{
+height: 3rem;
+width: 3rem;
+border-radius: 50%;
+}
+.contact_time{
+margin-top: 1rem;
+}
+.new_sms{
+  position: absolute;
+  top: -.6rem;
+  right: 0;
+  
+}
+.new_sms p{
+  background-color: rgb(233, 0, 0);
+  font-size: 1.5rem;
+  text-align: center;
+  color: wheat;
+width: 2rem;
+height: 2rem;
+  border-radius: 50%;
+}
+
+/* rside styleing start... */
+.rside{
+/* display: none; */
+width: 70%;
+height: 100vh;
+background-color: rgb(255, 251, 251);
+position: relative;
+
+}
+.call img{
+height: 2.5rem;
+width: 2.5rem;
+cursor: pointer;
+margin-top: .5rem;
+}
+.vcall img{
+height: 2.5rem;
+width: 2.5rem;
+cursor: pointer;
+margin-top: .5rem;
+}
+.ucall{
+height: 4.4rem;
+padding-right: 2rem;
+display: flex;
+background-color: rgb(190, 210, 228);
+}
+.messages{
+max-height: 71%;
+background-color: rgb(255, 255, 255);
+width: 100%;
+overflow: auto;
+position: relative;
+}
+.signle_sms{
+width: 100%;
+margin-bottom: 1rem;
+/* position: relative; */
+}
+.bal{
+max-width: 70%;
+word-wrap: break-word;
+padding: 1rem;
+border-radius: 1.5rem;
+margin: 1rem;
+}
+.signle_sms p{
+font-size: 1.8rem;
+
+}
+.opornent{
+/* float: right; */
+margin-right: auto;
+background-color: rgb(202, 206, 228);
+
+}
+.mysms{
+margin-left: auto;
+/* float: left; */
+background-color:dodgerblue;
+} 
+
+.pcalls{
+display: flex;
+width: 80%;
+margin-top: .5rem;
+}
+.pcalls h2{
+margin-top: .8rem;margin-left: 1rem;
+}
+.call{
+float: right;
+/* background-color: red; */
+}
+.vcall{
+float: right;
+margin-left: 3rem;
+}
+.sendm img{
+height: 3rem;
+width: 3rem;
+cursor: pointer;
+margin-left: 1.8rem;
+margin-top: .4rem;
+}
+.sendm textarea{
+width: 100%;
+height: 4rem;
+padding: .8rem 1rem;
+max-height: 2rme;
+border-radius: 2rem;
+font-size: 1.6rem;
+}
+.sendm{
+height: 4.4rem;
+padding: 0 .5rem;
+width: 100%;
+display: flex;
+/* display: none; */
+background-color: rgb(209, 219, 212);
+}
+.nothing{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+
+}
+
+.sending{
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  color: dodgerblue;
+  margin-left: 1rem;
+}
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background:dodgerblue;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+.html{
+  font-size: 55%;
+}
+.main{
+  /* height: 100vh; */
+}
+
+.messages{
+  max-height: 78vh;
+}
+
+ .usercontent{
+   /* height: 120vh; */
+     display: block;
+ }
+  .lside{
+      width: 100%;
+      display: none;
+
+  }
+  .rside{
+      position: absolute;
+      /* height: 60vh; */
+      width: 100%;
+      background-color: rgb(255, 255, 255);
+  }
+  .back{
+      display: block;
+  }
+
+
+}
+/* @media only screen and (min-width: 600px) {
+  .lside{
+      display: block;
+      width: 30%;
+  }
+  .rside{
+      display: block;
+      width: 70%;
+  }
+} */
+    </style>
+</head>
+<body>
+<div class="main">
+        <header><a href="user.php">CHAT R<span>OO</span>M</a></header>
+        <div class="uheader">
+            <div class="profile">
+                <img src="">
+            </div>
+            <div class="sglobal">
+                <input type="search" name="gserch" id="gsearch" autocomplete="off" placeholder="Search friend globaly..">
+                <div class="sicon">
+                    <img src="admin/img/search .png" alt="">
+                </div>
+                <div class="serch_item">
+                    
+                </div>
+            </div>
+            <div class="manu">
+                <img src="admin/img/menu.png" alt="">
+            </div>
+            <div class="optin">
+                <button><img src="admin/img/edit.png" alt="edit">Edit profile</button>
+                <button class="logout"><img src="admin/img/logout.png" alt="edit">Logout</button>
+            </div>
+        </div>
+        <div class="usercontent">
+            <div class="lside">
+                <h2>Your contact</h2>
+                <div class="contacts">
+                    <div class="contact" data-attr="'.$uid.'">
+                        <img src="admin/up/'.$up.'" alt="">
+                        <div class="contact_name">
+                            <h3 class="cfname">Dip to biswas</h3>
+                            <p>hdkfosd</p>
+                            <div class="new_sms"></div>
+                        </div>
+                        <div class="contact_time ">
+                            <p style='color:red'>Ofline</p>";
+                             </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rside">
+
+                <div class="ucall">
+                <div class="back">
+                    <img src="admin/img/back.png" alt="">
+                </div>
+                <div class="profile pcalls">
+                    <img src="admin/img/u.png" alt="">
+                    <h2>dipto biswas</h2>
+                </div>
+                <div class="call" data-attr="'">
+                    <img src="admin/img/phone-call.png" alt="">
+                </div>
+                <div class="vcall" data-attr="'.$uid.'">
+                    <img src="admin/img/video-camera.png" alt="">
+                </div>
+                </div>
+                <div class="messages">
+                <div class="signle_sms">
+                     <div class="bal opornent">
+                         <p>hi my name is dipto</p>
+                     </div>
+                     <div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div><div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div><div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div><div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div>
+                    <div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div>
+                    <div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div>
+                    <div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div>
+                    <div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div>
+                    <div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div>
+
+                    <div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div>
+                    <div class="bal opornent">
+                        <p>hi my name is dipto</p>
+                    </div>
+                 </div>
+                </div>
+                <div class="sendm">
+                <textarea name="" id="sms" ></textarea>
+                <div class="sent" data-attr="'.$uid.'"><img src="admin/img/sent.png" alt=""></div> </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // $('#sms').on("fucus",function(){
+
+        // })
+        $(document).ready(function() {
+    /* ... */
+    var windowHeight = $(window).innerHeight();
+    $('body').css({'height':windowHeight});
+    /* ... */
+});
+    </script>
+</body>
+</html>
