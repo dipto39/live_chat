@@ -59,11 +59,16 @@ function setEqualHeight(){
     if ($(window).width() < 600) {
         $(".lside").show();
         $(".rside").hide();
-       
+        $(".messages").css("width","80%");
     
-    }else{
+    }
+    if($(window).width() > 600){
         $(".lside").show();
         $(".rside").show();
+        $(".messages").css("height","86%");
+        $("header").show();
+        $(".uheader").show();
+
     }
 }
 // when window less than 600px

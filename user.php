@@ -208,11 +208,6 @@ $(document).on("keydown","#sms",function(e){
    $("#sms").val("");
   } 
 });
-$(document).ready(function() {
-    var windowHeight = $(window).innerHeight();
-    $('body').css({'height':windowHeight});
-
-});
     </script>
 </body>
 </html>
