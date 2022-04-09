@@ -1,4 +1,21 @@
 $(document).ready(function(){
+    /// log out
+    $(".logout").click(function(){
+        $.ajax({
+            url:"logout.php",
+            type:"POST",
+            success:function(e){
+       window.location.href = " http://localhost/live_chat/";
+              
+            }
+        })
+        
+    })
+    ///contactct page
+    $(".contactus").click(function(){
+        window.location.href = " http://localhost/live_chat/contact";
+        
+    })
 //click even is target is right or not
 var container=$(".optin");
 var cont2=$(".serch_item");

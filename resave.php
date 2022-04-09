@@ -32,7 +32,7 @@ $res=$obj->show_result();
        $_SESSION['uid']=$uid;
        $_SESSION['fname']=$fname;
        $_SESSION['up']=$up;
-       echo ' <script>window.location.replace("http://dipto.cf/live_chat/user.php");</script>';
+       echo ' <script>window.location.replace("http://localhost/live_chat/user");</script>';
    }
  }
 ?>

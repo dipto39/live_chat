@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION["uid"])){
-header("Location: http://dipto.cf/live_chat/user");    
+header("Location: http://localhost/live_chat/user");    
 }
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ header("Location: http://dipto.cf/live_chat/user");
                     <input type="password" name="lpass" id="lpass" required placeholder="Enter your Password">
                 </label>
                 <button id="nextl">Next</button>
-                <button type="submit" class="subsl" style="float: right;" id="ldpass">LOgin</button>
+                <button type="submit" class="subsl" style="float: right;" id="ldpass">Login</button>
                 <button id="prevl" class="hide">Prev</button>
             </form>
             </div>

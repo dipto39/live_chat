@@ -3,7 +3,7 @@ class database{
     private $host="localhost";
     private $uname="root";
     private $pass="";
-    private $dbname="chat_room";
+    private $dbname="test";
 
     private $conn=false;
     private $result=array();

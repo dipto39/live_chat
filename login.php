@@ -14,7 +14,7 @@ if(count($res[0]) > 0){
     $_SESSION['uid']=$uid;
     $_SESSION['fname']=$fname;
     $_SESSION['up']=$up;
-    echo '<script>window.location.replace("http://dipto.cf/live_chat//user");</script>';
+    echo '<script>window.location.replace("http://localhost/live_chat/user");</script>';
 }else{
     echo"<script>alert('Email or password not match')</script>";
 

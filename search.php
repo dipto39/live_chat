@@ -25,6 +25,9 @@ if(count($res1[0]) > 0){
 }
 $data.='</div></div>';
 }
+if($data == ""){
+    $data.="<h2 style='text-align: center;color:red;'>No result found..!<h2>";
+}
 echo $data;
 
 ?>

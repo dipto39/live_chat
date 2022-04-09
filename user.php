@@ -6,7 +6,7 @@ if(isset($_SESSION["uid"])){
     $uname=$_SESSION["fname"];
     
 }else{
-header("Location: http://localhost:890/new%20exersice/exersise/live_chat/index.php");    
+header("Location: http://localhost/live_chat/"); 
 }
 
 ?>
@@ -28,26 +28,7 @@ header("Location: http://localhost:890/new%20exersice/exersise/live_chat/index.p
 </head>
 <body>
     <div class="main">
-        <header><a href="user.php">CHAT R<span>OO</span>M</a></header>
-        <div class="uheader">
-            <div class="profile">
-                <img src="<?php echo "admin/up/".$_SESSION['up']?>" alt="">
-            </div>
-            <div class="sglobal">
-                <input type="search" name="gserch" id="gsearch" autocomplete="off" placeholder="Search friend globaly..">
-                
-                <div class="serch_item">
-                    
-                </div>
-            </div>
-            <div class="manu">
-                <img src="admin/img/menu.png" alt="">
-            </div>
-            <div class="optin">
-                <button><img src="admin/img/edit.png" alt="edit">Edit profile</button>
-                <button class="logout"><img src="admin/img/logout.png" alt="edit">Logout</button>
-            </div>
-        </div>
+<?php include "header.php"?>
         <div class="usercontent">
             <div class="lside">
                 <h2>Your contact</h2>
@@ -64,23 +45,13 @@ header("Location: http://localhost:890/new%20exersice/exersise/live_chat/index.p
         </div>
     </div>
     <script>
-        $(".logout").click(function(){
-            $.ajax({
-                url:"logout.php",
-                type:"POST",
-                success:function(e){
-                    $(".main").append(e);
-                }
-            })
-            
-        })
+
         //add friend
 $(document).on("click",'.add_btn',function(e){
     var gid=e.target.id;
     var table='<?php $ctable="C".$_SESSION['fname'].$_SESSION['uid']; echo $ctable = str_replace(' ', '', $ctable);?>';
     // console.log(table)
     $(this).prop('disabled', true);;
-    console.log($(this))
     $.ajax({
         url:"addf.php",
         type:"POST",
@@ -203,7 +174,6 @@ function setactive(){
 
 $(document).on("keydown","#sms",function(e){
   if(e.keyCode == 13){
-      console.log("clicked");
    $(".sent").click();
    $("#sms").val("");
   } 
