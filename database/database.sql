@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2022 at 10:09 AM
+-- Generation Time: Apr 10, 2022 at 03:19 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -62,15 +62,17 @@ CREATE TABLE `users` (
   `Email` varchar(50) DEFAULT NULL,
   `pass` varchar(100) DEFAULT NULL,
   `up` varchar(500) DEFAULT NULL,
-  `status` timestamp NOT NULL DEFAULT current_timestamp()
+  `status` timestamp NOT NULL DEFAULT current_timestamp(),
+  `vkey` varchar(100) DEFAULT NULL,
+  `verify` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uid`, `full_name`, `Email`, `pass`, `up`, `status`) VALUES
-(1, 'john doe', 'example@mail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '1649491706JohnDoe.jpg', '2022-04-09 08:09:45');
+INSERT INTO `users` (`uid`, `full_name`, `Email`, `pass`, `up`, `status`, `vkey`, `verify`) VALUES
+(1, 'john doe', 'example@mail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '1649578628JohnDoe.jpg', '2022-04-10 13:19:50', '8eb3fc2b25221fefd794f148abad9f12', 1);
 
 --
 -- Indexes for dumped tables

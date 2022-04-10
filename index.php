@@ -65,10 +65,6 @@ header("Location: http://localhost/live_chat/user");
                         Password:
                         <input type="password" name="rpass" id="rpass" placeholder="Enter your password">
                     </label>
-                <label for="rnum" class="hide">
-                    Phone:
-                    <input type="number" name="rnum" id="rnum" placeholder="Enter your Phone namber">
-                </label>
                 <label for="rpp" class="lavelpp hide">
                     Profile:
                     <div class="ppimg" style="text-align: center;">
@@ -108,6 +104,7 @@ header("Location: http://localhost/live_chat/user");
                     $("#rdpass").html("Submit");
                     $('#rdpass').removeAttr('disabled');
                    $('.main').append(e);
+                   location.reload();
                 }
             })
         }else{

@@ -17,6 +17,8 @@ $(document).ready(function(){
         $("#nextl").hide();
         $(".subsl").show();
         $("#l_pass").fadeIn(900);
+        $("#lpass").focus();
+
         }
         }
         if($("#nextl").html()=="Login"){
@@ -48,10 +50,12 @@ $(document).ready(function(){
     $("#btnl").on("click",function(){
         $(".hcontent").hide();
         $(".lcontent").show();
+        $("#lemail").focus();
     })
     $("#btnr").on("click",function(){
         $(".hcontent").hide();
         $(".rcontent").show();
+        $("#rfname").focus();
     })
 
 
@@ -79,6 +83,7 @@ $(document).ready(function(){
             $(".rcontent label:nth-child(2)").fadeIn(900);
             e.target.id="1";
             $(".prevr").show();
+            $("#rlname").focus();
             }
             
         }
@@ -100,6 +105,7 @@ $(document).ready(function(){
             $(".rcontent label:nth-child(3)").fadeIn(900);
             e.target.id="2";
             $(".prevr").attr("id","2");
+            $("#remail").focus();
             }
             
         }
@@ -117,6 +123,7 @@ $(document).ready(function(){
             $(".rcontent label:nth-child(4)").fadeIn(900);
             e.target.id="3";
             $(".prevr").attr("id","3");
+            $("#rpass").focus();
             }
         }
         if(vid == 3){
@@ -137,30 +144,10 @@ $(document).ready(function(){
             $(".rcontent label:nth-child(5)").fadeIn(900);
             e.target.id="4";
             $(".prevr").attr("id","4");
-            }
-        }
-        if(vid == 4){
-            var rphn=$("#rnum").val();
-            var pex=/^(?:(?:\+|00)88|01)?\d{11}$/;
-            if(rphn == ""|| rphn==null){
-                $('.rerr').html("Phone number can't empty");
-                $('.rerr').fadeIn(400)
-            }else if(!pex.test(rphn)){
-                $('.rerr').html("Enter a valid phone number");
-                $('.rerr').fadeIn(400)
-            }else{
-                $('.rerr').fadeOut()
-            $(".rcontent label:nth-child(5)").fadeOut();
-            $(".rcontent label:nth-child(6)").fadeIn(900);
-            e.target.id="5";
-            $(".prevr").attr("id","5");
             $(".nextr").hide();
             $(".subs").show();
             }
         }
-        // if(vid == 5){    
-
-        // }
     })
     $(".prevr").on("click",function(e){
         e.preventDefault();
