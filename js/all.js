@@ -93,5 +93,28 @@ if ($(window).width() < 600) {
     // location.reload();
 
 }
+/// sent image
+$(document).on("click","#sent_image",function(){
+    console.log("ball"); $('#imgupload').trigger('click'); 
+    var File = document.getElementById("imgupload").files.length;
+    if(File > 0){ 
+      $(".selected_img").css("display","flex");
+     }
+})
+$(document).on("change","#imgupload",function(e){
+    $(".selected_img").css("display","flex");
+    var img=document.querySelector("#img_output");
+    img.src = URL.createObjectURL(e.target.files[0]);
+    $("#sms").hide();
+})
+$(document).on("click",".cancle_imgae",function(){
+     var $el = $('#imgupload');
+      $el.wrap('<form>').closest('form').get(0).reset();
+      $el.unwrap();
+      $(".selected_img").css("display","none");
+      $("#sms").show();
+
+
+})
 
 })

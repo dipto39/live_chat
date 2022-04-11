@@ -99,7 +99,7 @@ $(document).on("click",'.contact',function(e){
                 type:"POST",
                 data:{id:gd,table:table},
                 success:function(e){
-                    $(".messages").html(e);
+                    $(".messages table").html(e);
                 }
             })
             let objDiv = document.querySelector(".messages");
@@ -116,36 +116,66 @@ objDiv.scrollTop = objDiv.scrollHeight;
 
 $(document).on("click",".sent",function(){
 
+    var File = document.getElementById("imgupload").files.length;
+    if(File > 0){ 
+        $("#sent_img_btn").click();
+     }else{
+                var message=$("#sms").val();
+            var uid=$(this).data('attr');
+            if(message == "" || message == null){
+                alert("please write some message");
+                $("#sms").focus();
+            }else{
+                $(".messages").append('<div class="signle_sms"><div class="bal mysms"><p>'+message+'</p></div></div>');
+                $("#sms").val("")
+                $("#sms").focus();
+                $.ajax({
+                    url:"sent.php",
+                    type:"POST",
+                    data:{sms:message,id:uid},
+                    beforeSend:function(){
+                    $(".sent").html("<div class='sending'>sending...</div>");
+                    $('#sms').attr('disabled', 'disabled');
+                    },
+                    success:function(e){
+                        $('#sms').removeAttr('disabled');
+                        $('#sms').focus();
+                    $(".sent").html('<img src="admin/img/sent.png" alt="">');
+                    //$("header").html(e);
+                    }
+                })
 
-    var message=$("#sms").val();
-    var uid=$(this).data('attr');
-    if(message == "" || message == null){
-        alert("please write some message");
-        $("#sms").focus();
-    }else{
-        $(".messages").append('<div class="signle_sms"><div class="bal mysms"><p>'+message+'</p></div></div>');
-        $("#sms").val("")
-        $("#sms").focus();
-        $.ajax({
-            url:"sent.php",
-            type:"POST",
-            data:{sms:message,id:uid},
-            beforeSend:function(){
-               $(".sent").html("<div class='sending'>sending...</div>");
-               $('#sms').attr('disabled', 'disabled');
-            },
-            success:function(e){
-                $('#sms').removeAttr('disabled');
-                $('#sms').focus();
-               $(".sent").html('<img src="admin/img/sent.png" alt="">');
-               //$("header").html(e);
-            }
-        })
+        let objDiv = document.querySelector(".messages");
+        objDiv.scrollTop = objDiv.scrollHeight;
 
-let objDiv = document.querySelector(".messages");
-objDiv.scrollTop = objDiv.scrollHeight;
-
-}
+        }
+     }
+    
+})
+////sent pic to other
+$(document).on("click","#sent_img_btn",function(e){
+    e.preventDefault();
+    var oid=$(".sent").data("attr");
+    var fdata=new FormData(sent_img_form);
+    fdata.append("oid",oid);
+    $.ajax({
+        url:"sent_img.php",
+        type:"POST",
+        data:fdata,
+        processData:false,
+        contentType:false,
+        cache:false,
+        beforeSend:function(){
+                    $(".sent").html("<div class='sending'>sending...</div>");
+                    $('#sms').attr('disabled', 'disabled');
+                    },
+        success:function(data){
+            $(".cancle_imgae").click();
+            $('#sms').removeAttr('disabled');
+            $('#sms').focus();
+            $(".sent").html('<img src="admin/img/sent.png" alt="">');
+        }
+    })
 })
 //get contact
 setInterval(get_contact,1000);

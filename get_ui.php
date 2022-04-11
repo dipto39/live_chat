@@ -23,10 +23,25 @@ $data.='<div class="ucall">
     <img src="admin/img/video-camera.png" alt="">
 </div>
 </div>
-<div class="messages">';
-
+<div class="messages"> <table></table>';
+   
 $data.='</div>
 <div class="sendm">
+<div class="sent_pic" titile="sent a photo">
+<img id="sent_image" src="admin/img/plus.png" alt="">
+<form id="sent_img_form" method="post" enctype="multipart/form-data">
+<input type="file" accept="image/*" id="imgupload" name="imgupload" style="display:none"/> 
+<input id="sent_img_btn" type="submit" style="display:none"/>
+</form>
+</div>
+<div class="selected_img">
+<div class="sigle_s_img">
+<div class="cancle_imgae">
+<img src="admin/img/Cancel.png" alt="">
+</div>
+<img id="img_output">
+</div>
+</div>
 <textarea name="" id="sms" ></textarea>
 <div class="sent" data-attr="'.$uid.'"><img src="admin/img/sent.png" alt=""></div> </div>';
 echo $data;

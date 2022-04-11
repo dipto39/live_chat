@@ -8,16 +8,22 @@ $res1=$db->show_result();
 $data="";
 if(count($res1[0]) > 0){
     foreach($res1[0] as list("mid"=>$mid,"uid"=>$uid,"sms"=>$sms,"sorr"=>$sorr,"tm"=>$tm)){
-        $data.='<div class="signle_sms">';
+        $data.='<tr class="signle_sms">';
         if($sorr == "r"){
             $cl="opornent";
         }else{
             $cl="mysms";
         }
-        $data.='<div class="bal '.$cl.'">
-            <p>'.$sms.'</p>
-        </div>
-    </div>';
+        $data.='<td class="bal '.$cl.'">';
+        if(substr($sms, 0, 5) == "@img@"){
+           $img=substr($sms,5);
+        $data.='<p> <img src="admin/sms/'.$img.'" alt=""></p>';
+        }else{
+            $data.='<p>'.$sms.'</p>';
+        }
+            
+       $data.=' </td>
+    </tr>';
     }
 }
 echo $data;
