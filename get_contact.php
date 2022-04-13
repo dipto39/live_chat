@@ -19,9 +19,14 @@ session_start();
                                     $data.='<div class="contact" data-attr="'.$uid.'">
                                     <img src="admin/up/'.$up.'" alt="">
                                     <div class="contact_name">
-                                        <h3 class="cfname">'.$fname.'</h3>
-                                        <p>'.$lsms.'</p>
-                                        <div class="new_sms">';if($new_sms == 0){
+                                        <h3 class="cfname">'.$fname.'</h3>';
+                                        if(substr($lsms, 0, 5) == "@img@"){
+                                          $img=substr($lsms,5);
+                                       $data.='<p>'.$fname.' sent a photo </p>';
+                                       }else{
+                                           $data.='<p>'.$sms.'</p>';
+                                       }
+                                       $data.='<div class="new_sms">';if($new_sms == 0){
                                           $data.= "";
                                         }elseif($new_sms > 9){
                                           $data.="<p>9+</p>";
