@@ -53,7 +53,8 @@ $ouid= $_POST['oid'];
             if($db->update($sender_ctable,$sarr," uid=$ouid")){
             }
             $recevar_ctable="C".$user_table;
-            $rarr=["lsms"=>$sms];
+            $sender_name=$_SESSION['fname'];
+            $rarr=["lsms"=>"$sender_name sent a photo"];
             $db->update($recevar_ctable,$rarr," uid=$suid");
             $new_sms_arr=["new_sms"=>"new_sms +1"];
             if($db->update_a($recevar_ctable,$new_sms_arr," uid=$suid")){

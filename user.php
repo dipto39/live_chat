@@ -91,8 +91,6 @@ $(document).on("click",'.contact',function(e){
            $(".rside").html(e);
         },
         complete:function(){
-         setInterval(ajaxcall,1000);
-            function ajaxcall(){
            var gd=$(".call").data('attr');
             $.ajax({
                 url:"gate_messages.php",
@@ -100,12 +98,10 @@ $(document).on("click",'.contact',function(e){
                 data:{id:gd,table:table},
                 success:function(e){
                     $(".messages table").html(e);
+                    let objDiv = document.querySelector(".messages");
+                    objDiv.scrollTop = objDiv.scrollHeight;
                 }
             })
-            let objDiv = document.querySelector(".messages");
-objDiv.scrollTop = objDiv.scrollHeight;
-
-}
 
         }
     })
@@ -126,7 +122,6 @@ $(document).on("click",".sent",function(){
                 alert("please write some message");
                 $("#sms").focus();
             }else{
-                $(".messages").append('<div class="signle_sms"><div class="bal mysms"><p>'+message+'</p></div></div>');
                 $("#sms").val("")
                 $("#sms").focus();
                 $.ajax({
@@ -142,7 +137,22 @@ $(document).on("click",".sent",function(){
                         $('#sms').focus();
                     $(".sent").html('<img src="admin/img/sent.png" alt="">');
                     //$("header").html(e);
-                    }
+                    },
+                    complete:function(){
+                  var table='<?php $table=$_SESSION["fname"].$_SESSION["uid"];echo $table=str_replace(' ', '', $table)?>';
+           var gd=$(".call").data('attr');
+            $.ajax({
+                url:"gate_messages.php",
+                type:"POST",
+                data:{id:gd,table:table},
+                success:function(e){
+                    $(".messages table").html(e);
+                    let objDiv = document.querySelector(".messages");
+                    objDiv.scrollTop = objDiv.scrollHeight;
+                }
+            })
+
+        }
                 })
 
         let objDiv = document.querySelector(".messages");
@@ -174,6 +184,21 @@ $(document).on("click","#sent_img_btn",function(e){
             $('#sms').removeAttr('disabled');
             $('#sms').focus();
             $(".sent").html('<img src="admin/img/sent.png" alt="">');
+        },
+        complete:function(){
+                  var table='<?php $table=$_SESSION["fname"].$_SESSION["uid"];echo $table=str_replace(' ', '', $table)?>';
+           var gd=$(".call").data('attr');
+            $.ajax({
+                url:"gate_messages.php",
+                type:"POST",
+                data:{id:gd,table:table},
+                success:function(e){
+                    $(".messages table").html(e);
+                    let objDiv = document.querySelector(".messages");
+                    objDiv.scrollTop = objDiv.scrollHeight;
+                }
+            })
+
         }
     })
 })

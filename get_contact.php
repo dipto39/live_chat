@@ -22,9 +22,15 @@ session_start();
                                         <h3 class="cfname">'.$fname.'</h3>';
                                         if(substr($lsms, 0, 5) == "@img@"){
                                           $img=substr($lsms,5);
-                                       $data.='<p>'.$fname.' sent a photo </p>';
+                                       $data.='<p>';
+                                       if($fname == $_SESSION['fname']){
+                                         $data.="you";
                                        }else{
-                                           $data.='<p>'.$sms.'</p>';
+                                         $data.="you sent a photo";
+                                       }
+                                       $data.=' sent a photo </p>';
+                                       }else{
+                                           $data.='<p>'.$lsms.'</p>';
                                        }
                                        $data.='<div class="new_sms">';if($new_sms == 0){
                                           $data.= "";

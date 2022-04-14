@@ -2,7 +2,7 @@
 include "db/database.php";
 $db=new database();
 $uid=$_POST['id'];
-$table=$_POST['table'];
+ $table=$_POST['table'];
 $db->select("users","up,full_name",null,"uid=$uid",null,null);
 $res=$db->show_result();
 $up=$res[0][0]['up'];
@@ -44,8 +44,25 @@ $data.='</div>
 </div>
 <textarea name="" id="sms" ></textarea>
 <div class="sent" data-attr="'.$uid.'"><img src="admin/img/sent.png" alt=""></div> </div>';
-echo $data;
 $u_ctable="C".$table;
+$data.='
+<script>setInterval(get_new_sms,1000);
+var ctable="'.strtolower($table).'"
+var uid="'.$uid.'"
+function get_new_sms(){
+    $.ajax({
+    url:"get_new_sms.php",
+    data:{ctable:ctable,uid:uid},
+    type:"POST",
+    success:function(e){
+        if(e == ""){  
+          }else{
+         $(".rside").append(e);
+        }
+    }
+})}
+</script>';
+echo $data;
 $new_sms_empty=["new_sms"=>"0"];
 if($db->update_a($u_ctable,$new_sms_empty," uid=$uid")){    
 }
