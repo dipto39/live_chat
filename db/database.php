@@ -3,7 +3,7 @@ class database{
     private $host="localhost";
     private $uname="root";
     private $pass="";
-    private $dbname="test";
+    private $dbname="chat_room";
 
     private $conn=false;
     private $result=array();
@@ -47,7 +47,7 @@ public function addtable($s){
             $sql.=" order by $order";
         }
         if(!$limit == null){
-            $sql.=" limit 0,$limit";
+            $sql.=" limit $limit";
         }
         $res=$this->mysqli->query($sql);
         if($res){

@@ -44,11 +44,12 @@ $data.='</div>
 </div>
 <textarea name="" id="sms" ></textarea>
 <div class="sent" data-attr="'.$uid.'"><img src="admin/img/sent.png" alt=""></div> </div>';
-$u_ctable="C".$table;
+$u_ctable="c".$table;
 $data.='
 <script>setInterval(get_new_sms,1000);
 var ctable="'.strtolower($table).'"
 var uid="'.$uid.'"
+console.log(ctable,uid);
 function get_new_sms(){
     $.ajax({
     url:"get_new_sms.php",
@@ -62,8 +63,10 @@ function get_new_sms(){
     }
 })}
 </script>';
-echo $data;
 $new_sms_empty=["new_sms"=>"0"];
-if($db->update_a($u_ctable,$new_sms_empty," uid=$uid")){    
+// echo $table;
+if($db->update_a(strtolower($table) ,$new_sms_empty," uid=$uid")){ 
+    echo $data;
+
 }
 ?>

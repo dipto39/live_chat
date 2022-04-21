@@ -45,11 +45,34 @@ header("Location: http://localhost/live_chat/");
         </div>
     </div>
     <script>
+    var table='<?php $ctable="C".$_SESSION['fname'].$_SESSION['uid'];echo  $ctable = str_replace(' ', '', $ctable);?>';
+// load sms...
+$(document).on("click","#load_more",function(e){
+    var pno=$(this).data("attr");
+    load_message(table,null,pno);
+    var l_parent=$("#load_more").parent().parent()
+    l_parent.remove()
+})
+    //load message function 
 
+function load_message(tb,uid,pageN){
+    var gd=$(".call").data('attr');
+            $.ajax({
+                url:"gate_messages.php",
+                type:"POST",
+                data:{id:gd,table:tb,pageN:pageN},
+                success:function(e){
+                    $(".messages table").prepend(e);
+                   // let objDiv = document.querySelector(".messages");
+                   // objDiv.scrollTop = objDiv.scrollHeight;
+                    // alert(objDiv.scrollHeight)
+                    // objDiv.scrollTop = objDiv.scrollHeight-objDiv.scrollHeight;
+                }
+            })
+}
         //add friend
 $(document).on("click",'.add_btn',function(e){
     var gid=e.target.id;
-    var table='<?php $ctable="C".$_SESSION['fname'].$_SESSION['uid']; echo $ctable = str_replace(' ', '', $ctable);?>';
     // console.log(table)
     $(this).prop('disabled', true);;
     $.ajax({
@@ -78,7 +101,6 @@ $(document).on("click",'.contact',function(e){
             }
 
     var gid=$(this).data('attr');
-    var table='<?php $table=$_SESSION["fname"].$_SESSION["uid"];echo $table=str_replace(' ', '', $table)?>';
 
     $.ajax({
         url:"get_ui.php",
@@ -91,17 +113,11 @@ $(document).on("click",'.contact',function(e){
            $(".rside").html(e);
         },
         complete:function(){
-           var gd=$(".call").data('attr');
-            $.ajax({
-                url:"gate_messages.php",
-                type:"POST",
-                data:{id:gd,table:table},
-                success:function(e){
-                    $(".messages table").html(e);
-                    let objDiv = document.querySelector(".messages");
+        load_message(table,gid)
+        setTimeout(() => {
+            let objDiv = document.querySelector(".messages");
                     objDiv.scrollTop = objDiv.scrollHeight;
-                }
-            })
+        }, 100);
 
         }
     })
@@ -139,7 +155,6 @@ $(document).on("click",".sent",function(){
                     //$("header").html(e);
                     },
                     complete:function(){
-                  var table='<?php $table=$_SESSION["fname"].$_SESSION["uid"];echo $table=str_replace(' ', '', $table)?>';
            var gd=$(".call").data('attr');
             $.ajax({
                 url:"gate_messages.php",
@@ -186,7 +201,6 @@ $(document).on("click","#sent_img_btn",function(e){
             $(".sent").html('<img src="admin/img/sent.png" alt="">');
         },
         complete:function(){
-                  var table='<?php $table=$_SESSION["fname"].$_SESSION["uid"];echo $table=str_replace(' ', '', $table)?>';
            var gd=$(".call").data('attr');
             $.ajax({
                 url:"gate_messages.php",

@@ -250,6 +250,14 @@ width: 100%;
 overflow: auto;
 position: relative;
 }
+#load_more{
+  background-color: rgb(28, 152, 253);
+  outline: none;
+  border: none;
+  padding: 4px 6px;
+  color: #f2f2f2;
+  cursor: pointer;
+}
 .messages table{
   border: none;
 width: 100%;
