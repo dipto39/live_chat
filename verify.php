@@ -28,10 +28,10 @@ if(isset($_GET['vkey'])){
       			}
       
     }else{
-        echo "account already veryfide or you enter wrong vkey";
+        echo "The account is already verified or you entered the wrong key";
     }
 }else{
-    echo "some thing went to wrong";
+    echo "Something went wrong";
 }
 
 ?>

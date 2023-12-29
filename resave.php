@@ -19,6 +19,7 @@ $res=$obj->show_result();
  }else{    
     $arr=["full_name"=>$fname,"Email"=>$email,"pass"=>$pass,"up"=>$up,"vkey"=>$vkey,"verify"=>0];
    if($obj->insert("users",$arr)){
+   echo "<script>window.location.replace('http://localhost/live_chat/verify.php?vkey=".$vkey."');</script>";
        if(move_uploaded_file($_FILES['rpp']['tmp_name'],"admin/up/".$up)){
         $to=$email;
         $sub="verify your email";

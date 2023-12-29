@@ -65,7 +65,7 @@ function get_new_sms(){
 </script>';
 $new_sms_empty=["new_sms"=>"0"];
 // echo $table;
-if($db->update_a(strtolower($table) ,$new_sms_empty," uid=$uid")){ 
+if($db->update_a($table ,$new_sms_empty," uid=$uid")){ 
     echo $data;
 
 }

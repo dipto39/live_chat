@@ -95,7 +95,7 @@ if ($(window).width() < 600) {
 }
 /// sent image
 $(document).on("click","#sent_image",function(){
-    console.log("ball"); $('#imgupload').trigger('click'); 
+    $('#imgupload').trigger('click'); 
     var File = document.getElementById("imgupload").files.length;
     if(File > 0){ 
       $(".selected_img").css("display","flex");

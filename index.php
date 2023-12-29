@@ -104,7 +104,7 @@ header("Location: http://localhost/live_chat/user");
                     $("#rdpass").html("Submit");
                     $('#rdpass').removeAttr('disabled');
                    $('.main').append(e);
-                   location.reload();
+                //    location.reload();
                 }
             })
         }else{

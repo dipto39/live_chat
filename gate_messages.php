@@ -34,7 +34,7 @@ if(count($res1[0]) > 0){
         }else{
             $cl="mysms";
         }
-        $data.='<td class="bal '.$cl.'">';
+        $data.='<td class="custom '.$cl.'">';
         if(substr($sms, 0, 5) == "@img@"){
            $img=substr($sms,5);
         $data.='<p> <img src="admin/sms/'.$img.'" alt=""></p>';

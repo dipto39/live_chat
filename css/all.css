@@ -267,14 +267,14 @@ width: 100%;
 width: 100%;
 margin-bottom: 1rem;
 }
-.bal{
+.custom{
 max-width: 70%;
 word-wrap: break-word;
 padding: 1rem;
 border-radius: 1.5rem;
 margin: 1rem;
 }
-.bal img{
+.custom img{
   height: 200px;
   width: 100%;
   
